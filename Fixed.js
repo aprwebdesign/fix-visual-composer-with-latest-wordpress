@@ -1,18 +1,22 @@
-//To fix the frontend editor:
+/*To fix the frontend editor:
 
-//1. Open the following two files:
+1. Open the following two files:
 
-//wp-content\plugins\js_composer\assets\js\frontend_editor\frontend_editor.js
-//wp-content\plugins\js_composer\assets\js\frontend_editor\custom_views.js
+wp-content\plugins\js_composer\assets\js\frontend_editor\frontend_editor.js
+wp-content\plugins\js_composer\assets\js\frontend_editor\custom_views.js
 
-//2. Replace
+2. Replace
+*/
 
 this.$controls = $( _.template( template, data, vc.template_options ).trim() ).addClass( 'vc_controls' ); with
 this.$controls = $( ( "vc.template_options" ).trim() ).addClass( 'vc_controls' );
 
-//To fix the backend editor:
+/* 
+*Source solution: https://stackoverflow.com/questions/36633822/visual-composer-doesnt-load-and-gives-typeerror-template-trim-is-not-a
 
-/*
+To fix the backend editor:
+
+
 Find html2element in
 Version < 4.8: /wp-content/plugins/js_composer/assets/js/backend/composer-view.js
 Version > 4.9: wp-content/plugins/js_composer/assets/js/dist/backend-actions.min.js
@@ -44,3 +48,7 @@ html2element: function(html) {
         attributes[attr.name] = attr.value
     }), this.$el.attr(attributes).html($template.html()), this.setContent(), this.renderContent()
 },
+
+  /*
+  *source solution: https://gist.github.com/levantoan/519bb0d42c9f7bd6c4d78ef1686bb848
+  */
